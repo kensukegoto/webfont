@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css?family=Kosugi+Maru|M+PLUS+1p|Noto+Serif+JP" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+
+    <section class="w960">
+      <h2>これは確かに明朝です。</h2>
+      <h3>まずは例文</h3>
+      <p>天皇陛下の在位３０年を祝う政府の記念式典が２４日、東京都千代田区の国立劇場で天皇、皇后両陛下を迎えて開かれた。天皇陛下は「憲法で定められた象徴としての天皇像を模索する道は果てしなく遠く」と自らの歩みを振り返り、今後の皇室に向け「次の時代、更に次の時代と象徴のあるべき姿を求め、先立つこの時代の象徴像を補い続けていってくれることを願っています」と時折声を震わせながら語った。</p>
+
+      <h3 class="mp1p">Googleフォントであるゴシック「Noto Serif JP」のソースをローカルの明朝「ヒラギノ明朝 ProN W6」に置き換える</h3>
+      
+      <pre>
+        <code>@font-face{
+          font-family: "M PLUS 1p";
+          src: local('ヒラギノ明朝 ProN W6'),local('HiraMinProN-W6'),local('HG明朝E'),local("ＭＳ Ｐ明朝"),local("MS PMincho");
+        }</code>
+          </pre>
+
+      <h3>IEのみローカルのフォントを使いたい</h3>
+      <p>ハックの方法は出てくるが適用していいものやら…。IEのみWEBフォントを読ませないという処理ならばscriptタグやlinkタグの読み込みをJSでやれば良いのでは？</p>
+    </section>
+  </main>
+  <footer></footer>
+  <script>
+    var add = '@font-face{font-family:"M PLUS 1p";src: local("ヒラギノ明朝 ProN W6"),local("HiraMinProN-W6"),local("HG明朝E"),local("ＭＳ Ｐ明朝"),local("MS PMincho");}'
+    var userAgent = window.navigator.userAgent;
+    if(/Edge/.test(userAgent)){
+      var style = document.createElement("style");
+      style.innerText=add;
+      document.head.appendChild(style);
+    }
+  </script>
+</body>
+</html>
